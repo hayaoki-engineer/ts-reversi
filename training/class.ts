@@ -3,6 +3,7 @@ class Fraction {
   constructor(private _numerator: number, private _denominator: number) { }
   
   add(other: Fraction): Fraction {
+    
     const resultNumerator =
       this._numerator * other._denominator +
       this._denominator * other._numerator;
