@@ -1,10 +1,20 @@
 class Fraction {
-  private _numerator: number;
-  private _denominator: number;
+ 
+  constructor(private _numerator: number, private _denominator: number) { }
+  
+  add(other: Fraction): Fraction {
+    const resultNumerator =
+      this._numerator * other._denominator +
+      this._denominator * other._numerator;
+    
+    const resultDenominator =
+      this._denominator * other._denominator;
 
-  constructor(numerator: number, denominator: number) {
-    this._numerator = numerator;
-    this._denominator = denominator;
+    return new Fraction(resultNumerator, resultDenominator);
+  }
+
+  toStoring(): string {
+    return `${this._numerator}/${this._denominator}`;
   }
 
   get numerator() {
@@ -20,5 +30,8 @@ const f1 = new Fraction(1, 2);
 console.log(f1.numerator);
 console.log(f1.denominator);
 
-// f1.numerator = 3;
-console.log(f1.numerator);
+const f2 = new Fraction(1, 3);
+console.log(f2.toStoring())
+
+const result = f1.add(f2);
+console.log(result.toStoring());
